@@ -1,0 +1,62 @@
+<!doctype html><html lang=en><head>
+<meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name=theme-color content="#080608"><title>Rapu vs grep — the honest benchmark</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#080608;--ink:#f2e9e4;--muted:#9a8a90;--crim:#DC143C;--gold:#e6b450;--line:rgba(220,20,60,.18);--card:linear-gradient(160deg,rgba(30,10,16,.7),rgba(12,8,12,.55))}
+body{background:var(--bg);color:var(--ink);font:16px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;position:relative}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse 90% 70% at 50% 12%,#1a0010 0%,#080608 60%)}
+.wrap{max-width:720px;margin:0 auto;padding:56px 22px 80px}
+a.back{color:var(--gold);text-decoration:none;font-size:13px;font-weight:700}
+.eyebrow{font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--crim);font-weight:800;margin:18px 0 6px}
+h1{font-size:clamp(30px,7vw,46px);font-weight:850;letter-spacing:-.02em;line-height:1.05}
+.lede{font-size:17px;color:var(--muted);margin:14px 0}
+h2{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:34px 0 8px;font-weight:800}
+.card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:18px 20px;margin:12px 0}
+.card b{color:var(--gold)}.card p{color:var(--muted);margin:8px 0}
+pre{background:#0d0709;border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto;font:13px/1.6 ui-monospace,Menlo,monospace;color:var(--ink);margin:10px 0}
+.win{color:#6fe3ad;font-weight:750}.lose{color:#ff8fa3;font-weight:750}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:14px}
+td,th{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}th{color:var(--gold);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.foot{margin-top:40px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:20px}
+.foot a{color:var(--gold);text-decoration:none}
+</style></head><body><div class=wrap>
+<a class=back href="./">← Scarlet Sovereign Systems</a>
+<div class=eyebrow>Rapu · benchmark</div>
+<h1>Rapu vs grep — the honest version</h1>
+<p class=lede>The whole truth, both where Rapu wins and where grep does. Run on public repos so you can check it yourself. <b style="color:var(--gold)">The source is private; the numbers aren't.</b></p>
+
+<h2>1 · Relevance — Rapu wins, always</h2>
+<div class=card>
+<p>grep matches the literal string you typed. Rapu ranks by <b>meaning</b>, and surfaces the <b>definition</b> over the usages.</p>
+<pre>redis · query: "hash table resize"
+  grep :  1 hit  (a code comment)
+  rapu :  #1 → src/dict.c:1677 — the actual resize logic, ranked (score 19.91)
+
+scarlet engine · query: "ternary matrix multiply"
+  grep :  0 hits  (the literal phrase isn't in the code)
+  rapu :  #1 → "TritCore GEMV Kernels — Zero-multiply ternary matrix-vector product"</pre>
+<p>For a human — or an AI agent — that doesn't know the exact identifier, this is the difference between <b>guessing and knowing.</b></p>
+</div>
+
+<h2>2 · Speed — it depends, and we'll tell you exactly how</h2>
+<table>
+<tr><th>Scenario</th><th>grep</th><th>Rapu</th><th>Winner</th></tr>
+<tr><td>Big repo w/ build artifacts, repeated queries<br><span style="color:var(--muted);font-size:12px">310 MB tree, 5 warm queries</span></td><td>139 ms</td><td>39 ms</td><td class=win>Rapu · 3.5×</td></tr>
+<tr><td>Small, clean codebase, few queries<br><span style="color:var(--muted);font-size:12px">redis, 30 MB clean C, per query</span></td><td>~13 ms</td><td>~29 ms + one-time index</td><td class=lose>grep</td></tr>
+</table>
+<div class=card>
+<p><b>Why:</b> grep re-scans the whole tree every query — including binaries and build junk. Rapu pays once to build an index, then skips all of that. On a clean little tree with a couple of searches, grep's raw scan is genuinely hard to beat. On a real, messy repo you search again and again — <b>exactly what an AI agent does</b> — Rapu pulls ahead and stays there.</p>
+</div>
+
+<h2>3 · Verdict</h2>
+<div class=card>
+<p><b>Use Rapu</b> when you need to find code by <b>meaning</b>, or you're searching a big/messy repo over and over. <b>Use grep</b> when you already know the exact string in a small, clean tree.</p>
+<p>Rapu is <b>as smart as it is honest</b> — it doesn't claim to beat grep at everything. It claims to <b>read your code</b>, and to win the workload that matters: an agent, searching a real repo, by intent.</p>
+</div>
+
+<div class=foot>
+Reproducible: <code>rapu index &lt;dir&gt;</code> then <code>rapu search &lt;query&gt;</code> vs <code>grep -rin</code>, best-of-3 warm, on public repos (redis). Measured 2026-07-02.<br>
+<a href="./">Scarlet Sovereign Systems</a> · Rapu source is proprietary.
+</div>
+</div></body></html>
