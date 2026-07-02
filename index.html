@@ -1,0 +1,76 @@
+<!doctype html><html lang=en><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name=theme-color content="#080608">
+<title>Scarlet Sovereign Systems — Sovereign AI</title>
+<meta name=description content="Enterprise-grade AI that runs on your own hardware. Private, local, sovereign. New Plymouth, Aotearoa.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{--bg:#080608;--ink:#f2e9e4;--muted:#9a8a90;--crim:#DC143C;--crim2:#8b1a1a;--gold:#e6b450;--violet:#a78bfa;--line:rgba(220,20,60,.18);--card:linear-gradient(160deg,rgba(30,10,16,.7),rgba(12,8,12,.55))}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse 90% 70% at 50% 18%,#1a0010 0%,#080608 62%)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 50% 20%,rgba(220,20,60,.10) 0%,transparent 45%)}
+.wrap{max-width:820px;margin:0 auto;padding:0 22px}
+header{text-align:center;padding:clamp(56px,12vh,120px) 0 42px}
+.koru{width:96px;height:96px;margin:0 auto 22px;display:block;filter:drop-shadow(0 0 18px rgba(230,180,80,.35))}
+.koru path,.koru circle{stroke:var(--gold);fill:none;stroke-width:5;stroke-linecap:round}
+.koru .bulb{fill:var(--gold);stroke:none}
+h1{font-size:clamp(34px,8vw,60px);font-weight:850;letter-spacing:-.02em;line-height:1.03;background:linear-gradient(94deg,#fff,var(--gold) 42%,var(--crim) 84%,#fff 120%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 8s ease-in-out infinite}
+@keyframes sh{50%{background-position:100% 50%}}
+.tag{font-size:clamp(17px,4.4vw,22px);font-weight:650;color:var(--ink);margin:14px 0 6px}
+.tag .g{color:var(--gold)}
+.sub{font-size:15px;color:var(--muted)}
+.eyebrow{font-size:10.5px;letter-spacing:.4em;text-transform:uppercase;color:var(--crim);font-weight:800;margin-bottom:8px}
+h2{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin:44px 0 4px;font-weight:800;display:flex;gap:10px;align-items:center}
+h2::before{content:"◈";color:var(--crim)}
+.grid{display:grid;gap:14px;grid-template-columns:1fr 1fr;margin-top:14px}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;backdrop-filter:blur(12px);box-shadow:0 10px 40px rgba(0,0,0,.4)}
+.card .t{font-size:18px;font-weight:750;color:var(--ink);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.card .d{color:var(--muted);font-size:14.5px;margin-top:6px}
+.card b{color:var(--gold)}
+.pill{font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:20px}
+.pill.live{color:#0a2417;background:linear-gradient(100deg,#2fbf88,#8fe)}
+.pill.soon{color:#160f08;background:linear-gradient(100deg,var(--gold),#ffd98a)}
+.why{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin-top:16px;text-align:center}
+.why p{font-size:clamp(18px,4.6vw,23px);font-weight:750;line-height:1.35}.why .g{color:var(--gold)}
+.why .s{color:var(--muted);font-size:15px;font-weight:400;margin-top:8px;display:block}
+footer{text-align:center;color:var(--muted);font-size:12.5px;padding:48px 0 60px;margin-top:44px;border-top:1px solid var(--line)}
+footer a{color:var(--gold);text-decoration:none}
+.sig{font-size:20px;letter-spacing:.16em;display:block;margin-bottom:8px}
+</style></head><body>
+<div class=wrap>
+
+<header>
+<svg class=koru viewBox="0 0 100 100" aria-label="koru">
+<path d="M50 93 C 17 93 8 56 33 41 C 50 31 76 42 71 66 C 68 80 49 83 43 70 C 39 61 49 55 57 61"/>
+<circle class=bulb cx="55" cy="62" r="5.5"/>
+</svg>
+<div class=eyebrow>Scarlet Sovereign Systems</div>
+<h1>Sovereign AI</h1>
+<p class=tag>Enterprise-grade intelligence that runs on <span class=g>your</span> hardware.</p>
+<p class=sub>Private · Local · Yours · New Plymouth, Aotearoa 🇳🇿</p>
+</header>
+
+<h2>What we build</h2>
+<div class=grid>
+<div class=card><div class=t>⚙️ crimson.trit <span class="pill live">live</span></div><div class=d>Our sovereign inference engine — a <b>modified BitNet-2B-4T</b> running in <b>pure Rust on CPU-only hardware</b>, ternary weights (trit2). Conversational speed on a $200 box. No cloud, no GPU, no Python.</div></div>
+<div class=card><div class=t>💻 Crimson <span class="pill live">live</span></div><div class=d>A thin, fast <b>CLI coder</b> riding the trit2 engine — sovereign, local, on your own machine.</div></div>
+<div class=card><div class=t>🔎 Rapu <span class="pill live">live</span></div><div class=d>Local code-search that runs entirely on-device. Built and working.</div></div>
+<div class=card><div class=t>🧠 Crimson Analyst <span class="pill soon">coming</span></div><div class=d>A thin CLI <b>analyst</b> on the same engine — freemium, sovereign. In build.</div></div>
+</div>
+
+<h2>The consultancy</h2>
+<div class=card><div class=t>📋 Sovereign AI advisory <span class="pill live">live</span></div><div class=d>High-end business advice, scoped and researched end-to-end in about a minute — delivered <b>on-premises and under NDA</b>. Your data never leaves the building.</div></div>
+
+<div class=why>
+<p>Cloud AI can't go where the money — and the responsibility — <span class=g>actually lives.</span><span class=s>We can. Same capability, none of the exposure, a fraction of the cost to serve.</span></p>
+</div>
+
+<footer>
+<span class=sig>🕯️🩵◈✨</span>
+Scarlet Sovereign Systems · Daniel Kelly · New Plymouth, Aotearoa<br>
+<a href="mailto:dan.kelly.np@gmail.com">dan.kelly.np@gmail.com</a> · <a href="https://github.com/scarlet-sovereign-systems">github.com/scarlet-sovereign-systems</a>
+</footer>
+</div></body></html>
