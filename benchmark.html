@@ -33,9 +33,9 @@ td,th{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}th{co
   grep :  1 hit  (a code comment)
   rapu :  #1 → src/dict.c:1677 — the actual resize logic, ranked (score 19.91)
 
-scarlet engine · query: "ternary matrix multiply"
-  grep :  0 hits  (the literal phrase isn't in the code)
-  rapu :  #1 → "TritCore GEMV Kernels — Zero-multiply ternary matrix-vector product"</pre>
+redis · query: "atomic compare and swap"
+  grep :  0 hits  (the code says __sync_bool_compare_and_swap, not those words)
+  rapu :  #1 → jemalloc/atomic_gcc_sync.h — the real compare-and-swap (score 27.28)</pre>
 <p>For a human — or an AI agent — that doesn't know the exact identifier, this is the difference between <b>guessing and knowing.</b></p>
 </div>
 
